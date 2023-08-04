@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { ProductCard } from "./Product.styled";
 import { StyledLink } from "../Link/Link.styled";
+import { uid } from "uid";
 
 export default function Product() {
   const router = useRouter();
@@ -24,6 +25,22 @@ export default function Product() {
       <p>
         Price: {data.price} {data.currency}
       </p>
+
+      {data.reviews && data.reviews.length > 0 && (
+        <div>
+          <h3>Reviews:</h3>
+          <ul>
+            {data.reviews.map((review) => (
+              <li key={review._id}>
+                <p>Rating: {review.rating}</p>
+                <p>Title: {review.title}</p>
+                <p>Text: {review.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <StyledLink href="/">Back to all</StyledLink>
     </ProductCard>
   );

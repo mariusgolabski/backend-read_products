@@ -2,7 +2,6 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { ProductCard } from "./Product.styled";
 import { StyledLink } from "../Link/Link.styled";
-import { uid } from "uid";
 
 export default function Product() {
   const router = useRouter();
